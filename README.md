@@ -1,5 +1,7 @@
 # Loci
 
+> Inspired by the r/secondbrain post [*Maps organize information through landscapes — why?*](https://www.reddit.com/r/secondbrain/comments/1xmxw27/maps_organize_information_through_landscapes_why/), which brought back the book [*Moonwalking with Einstein*](https://www.penguinrandomhouse.com/books/301277/moonwalking-with-einstein-by-joshua-foer/) and its memory palaces.
+
 A private landscape for notes, articles, links, and ideas. Explore the same collection as a 2D atlas or a 3D terrain, with related ideas nearby and unrelated ideas farther apart.
 
 ## Ideas in Space
@@ -22,7 +24,9 @@ Loci adapts this spatial idea to a personal knowledge collection. Notes become p
 
 You might enter a region through a recent note about maps, follow a connection to an older article about spatial memory, and encounter a project idea you had forgotten saving. The aim is to turn browsing into a source of retrieval cues: remember a neighborhood, recognize a nearby thought, and follow it back to something worth recovering. The app uses this mnemonic tradition as a design inspiration for rediscovery.
 
-![Loci icon](assets/icon.png)
+![Twenty linked ideas on the Loci terrain: one note selected, then a full orbit of the landscape](assets/loci-demo.gif)
+
+*Twenty ideas imported as Markdown with `[[wikilinks]]` and tags form five regions. One note is selected to show its nearby thoughts, then the camera orbits once around the landscape. Recorded headless from browser mode (WebGL).*
 
 ## Run
 
@@ -91,8 +95,8 @@ Use the first-run migration or import notes/JSON through the application. Reimpo
 - **XYZ scaling:** enable it in Settings to adjust X width and Y depth independently (0.5×–3×), and Z height (0.25×–3×). Height applies in 3D; both views share X/Y scaling. Preferences are saved on this device. Reset scaling restores the defaults; Fit landscape accounts for the active scales.
 - **Hill base:** a separate slider (0.5×–4×, default 2.5×) widens the footprint of every hill without moving notes. At the default, neighbouring hills run together into one meadow; contour rings follow the merged surface, so blended hills share an outline. Lower it for separate mountains.
 - **2D Atlas:** flat overhead navigation, panning, zooming, and selectable notes.
-- **3D Terrain:** real elevated mesh with depth testing, orbit, tilt, pan, and zoom. Right-drag, Alt-drag, or Shift-drag to orbit; the visible camera buttons work without a mouse gesture.
-- **Drag:** pan. **Scroll:** zoom. **Fit landscape:** reset camera.
+- **3D Terrain:** real elevated mesh with depth testing, orbit, tilt, pan, and zoom. Left-drag orbits (sideways rotates, up and down tilts); right-drag pans; the visible camera buttons work without a mouse gesture.
+- **Drag:** orbit in 3D, pan in 2D. **Right-drag:** pan. **Scroll:** zoom. **Fit landscape:** reset camera.
 - **Find a thought / Cmd or Ctrl+K:** full-text search through SQLite FTS5. A LIKE fallback is available when a runtime lacks FTS5.
 - **Nearby thoughts:** explicit links and inferred similarities. Bookmarks, recently added, note editing, quick capture, and external source links are available.
 - **A little serendipity:** revisit a randomly selected saved note.
