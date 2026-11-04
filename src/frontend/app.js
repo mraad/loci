@@ -127,7 +127,7 @@ for(const dialog of document.querySelectorAll('dialog'))dialog.addEventListener(
 function zoom(factor){terrain.zoom=Math.max(.15,Math.min(3,terrain.zoom*factor));terrain.resize();$('zoom-level').textContent=Math.round(terrain.zoom*100)+'%';renderOverlay();}
 listen('zoom-in','click',()=>zoom(1.2));listen('zoom-out','click',()=>zoom(1/1.2));function fitLandscape(){terrain.yaw=-.12;terrain.pitch=.92;terrain.fit();$('zoom-level').textContent=Math.round(terrain.zoom*100)+'%';renderOverlay();}
 listen('reset-view','click',fitLandscape);
-for(const [id,flat] of [['terrain-view',false],['flat-view',true]])listen(id,'click',()=>{terrain.flat=flat;terrain.resize();$('orbit-controls').hidden=flat;$('terrain-view').classList.toggle('active',!flat);$('flat-view').classList.toggle('active',flat);renderOverlay();});
+for(const [id,flat] of [['terrain-view',false],['flat-view',true]])listen(id,'click',()=>{terrain.flat=flat;terrain.resize();$('orbit-controls').hidden=flat;$('map-hint').innerHTML=flat?'Drag to pan <span>·</span> Scroll to zoom':'Drag to orbit <span>·</span> Right-drag to pan <span>·</span> Scroll to zoom';$('terrain-view').classList.toggle('active',!flat);$('flat-view').classList.toggle('active',flat);renderOverlay();});
 for(const [id,yaw,pitch] of [['rotate-left',-.22,0],['rotate-right',.22,0],['tilt-up',0,.12],['tilt-down',0,-.12]])listen(id,'click',()=>{terrain.yaw+=yaw;terrain.pitch=Math.max(.25,Math.min(1.5,terrain.pitch+pitch));terrain.resize();renderOverlay();});
 $('map').addEventListener('contextmenu',e=>e.preventDefault());
 let drag=null,dragFrame=0;
