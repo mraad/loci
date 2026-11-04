@@ -1,0 +1,26 @@
+{
+  "name": "loci",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "A local-first landscape for notes, links, and ideas.",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "test": "node --test tests/*.test.js",
+    "preview": "node scripts/prepare-web.js && cargo run -p loci-server --",
+    "server": "node scripts/prepare-web.js && cargo run -p loci-server --release --",
+    "start": "node scripts/prepare-web.js && cargo run -p loci-server --release --",
+    "setup:embeddings": "node scripts/prepare-embeddings.js",
+    "test:rust": "cargo test --workspace"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "4.3.2"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.4"
+  }
+}

@@ -1,0 +1,13 @@
+[workspace]
+members = ["crates/loci-core", "crates/loci-server", "src-tauri"]
+default-members = ["crates/loci-core", "crates/loci-server"]
+resolver = "2"
+
+[workspace.package]
+version = "0.2.0"
+edition = "2024"
+license = "MIT"
+
+[profile.release]
+lto = "thin"
+strip = true

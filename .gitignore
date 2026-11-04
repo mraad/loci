@@ -1,0 +1,12 @@
+dist/
+.DS_Store
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.build/
+data/
+node_modules/
+src/frontend/vendor/
+src/frontend/models/
+target/
+src-tauri/gen/
