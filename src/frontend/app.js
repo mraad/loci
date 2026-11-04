@@ -131,8 +131,8 @@ for(const [id,flat] of [['terrain-view',false],['flat-view',true]])listen(id,'cl
 for(const [id,yaw,pitch] of [['rotate-left',-.22,0],['rotate-right',.22,0],['tilt-up',0,.12],['tilt-down',0,-.12]])listen(id,'click',()=>{terrain.yaw+=yaw;terrain.pitch=Math.max(.25,Math.min(1.5,terrain.pitch+pitch));terrain.resize();renderOverlay();});
 $('map').addEventListener('contextmenu',e=>e.preventDefault());
 let drag=null,dragFrame=0;
-$('map').addEventListener('pointerdown',e=>{if(e.target.closest('.note-node'))return;drag={x:e.clientX,y:e.clientY,px:terrain.pan.x,py:terrain.pan.y,yaw:terrain.yaw,pitch:terrain.pitch,orbit:!terrain.flat&&(e.button===2||e.altKey||e.shiftKey)};$('map').setPointerCapture(e.pointerId);$('map').classList.add('dragging');});
-$('map').addEventListener('pointermove',e=>{if(!drag)return;if(drag.orbit){terrain.yaw=drag.yaw+(e.clientX-drag.x)*.006;terrain.pitch=Math.max(.25,Math.min(1.5,drag.pitch+(e.clientY-drag.y)*.005));}else{terrain.pan.x=drag.px+e.clientX-drag.x;terrain.pan.y=drag.py+e.clientY-drag.y;}if(!dragFrame)dragFrame=requestAnimationFrame(()=>{dragFrame=0;terrain.resize();moveOverlay();});});
+$('map').addEventListener('pointerdown',e=>{if(e.target.closest('.note-node'))return;drag={x:e.clientX,y:e.clientY,px:terrain.pan.x,py:terrain.pan.y,yaw:terrain.yaw,pitch:terrain.pitch,orbit:!terrain.flat&&e.button!==2};$('map').setPointerCapture(e.pointerId);$('map').classList.add('dragging');});
+$('map').addEventListener('pointermove',e=>{if(!drag)return;if(drag.orbit){terrain.yaw=drag.yaw-(e.clientX-drag.x)*.006;terrain.pitch=Math.max(.25,Math.min(1.5,drag.pitch+(e.clientY-drag.y)*.005));}else{terrain.pan.x=drag.px+e.clientX-drag.x;terrain.pan.y=drag.py+e.clientY-drag.y;}if(!dragFrame)dragFrame=requestAnimationFrame(()=>{dragFrame=0;terrain.resize();moveOverlay();});});
 for(const name of ['pointerup','pointercancel'])$('map').addEventListener(name,()=>{if(drag)renderOverlay();drag=null;$('map').classList.remove('dragging');});
 $('map').addEventListener('wheel',e=>{e.preventDefault();zoom(Math.exp(-e.deltaY*.001));},{passive:false});
 new ResizeObserver(()=>{terrain.resize();renderOverlay();}).observe($('map'));
